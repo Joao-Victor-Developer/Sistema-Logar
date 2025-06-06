@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Área Protegida</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #111;
+      color: #0f0;
+    }
+
+    .box {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+      box-shadow: 0 0 10px #0f0;
+    }
+
+    button {
+      background-color: #0f0;
+      color: #000;
+      padding: 10px 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #0c0;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>🔥 BEM-VINDO, GUERREIRO 🔥</h1>
+    <p>Você está na zona segura. Sessão ativa para:</p>
+    <h3 id="userEmail"></h3>
+
+    <button onclick="logout()">Sair da Sessão</button>
+  </div>
+
+  <script>
+    const email = localStorage.getItem('logado');
+
+    // Se não estiver logado, redireciona para cadastro.html
+    if (!email) {
+      alert('Acesso negado! Vá se registrar antes de entrar no combate.');
+      window.location.href = 'cadastro.html';
+    } else {
+      document.getElementById('userEmail').textContent = email;
+    }
+
+    function logout() {
+      localStorage.removeItem('logado');
+      alert('Sessão encerrada. Volte mais forte.');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
